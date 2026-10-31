@@ -1,0 +1,3 @@
+import * as THREE from 'three'
+/** Runtime replacement for the two gear bodies when a learner changes tooth counts. */
+export function createGearGeometry(teeth:number,radius:number){const shape=new THREE.Shape();const count=Math.max(8,Math.min(80,Math.round(teeth)));for(let i=0;i<count*4;i++){const a=i*Math.PI*2/(count*4)-Math.PI/2,r=radius*(i%4===0||i%4===3?1.09:1);if(i===0)shape.moveTo(Math.cos(a)*r,Math.sin(a)*r);else shape.lineTo(Math.cos(a)*r,Math.sin(a)*r)}shape.closePath();const hole=new THREE.Path();hole.absarc(0,0,radius*.16,0,Math.PI*2,true);shape.holes.push(hole);return new THREE.ExtrudeGeometry(shape,{depth:.3,bevelEnabled:true,bevelThickness:.025,bevelSize:.018,bevelSegments:2,curveSegments:8})}

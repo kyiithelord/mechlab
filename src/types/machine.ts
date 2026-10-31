@@ -1,0 +1,2 @@
+export type MachineSlug = 'gears' | 'engine' | 'hydraulic' | 'electric-motor'
+export type Machine = { slug: MachineSlug; name: string; category: string; eyebrow: string; description: string; summary: string; accent: string; modelPath: string; objectives: string[]; applications: string[]; components: { id: string; name: string; description: string }[]; lessons: { title: string; text: string }[]; specifications: string[]; quiz: { question: string; choices: string[]; answer: number; explanation: string }[] }
